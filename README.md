@@ -82,5 +82,5 @@ Lastly, you'll use the box/tif files created above to train your country's licen
 
 Execute the "train.py" file.  Type in your country code.
 
-If all went well, you should have a new file named l[countrycode].traineddata.  Copy this file into your runtime_directory and it is now ready for OpenALPR to use.
+If all went well, you should have a new file named l[countrycode].traineddata.  Copy this file into your runtime_directory (runtime_data/ocr/tessdata/) and it is now ready for OpenALPR to use.
 
