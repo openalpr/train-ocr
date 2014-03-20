@@ -16,14 +16,12 @@ TESSERACT_TRAINDIR= TESSERACT_DIR + '/training'
 
 country = raw_input("Two-Letter Country Code to Train: ").lower()
 
-if country != 'us' and country != 'eu':
-    print "Bad country!"
-    sys.exit(1)
-
 LANGUAGE_NAME='l' + country
 
 box_files = glob.glob('./' + country + '/input/*.box')
-
+if not box_files:
+    print "Cannot find input files"
+    sys.exit(1)
 
 os.system("rm ./tmp/*")
 
