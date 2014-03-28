@@ -25,8 +25,8 @@ You should tweak the following values:
 
   - plate_width_mm = [width of full plate in mm]
   - plate_height_mm = [height of full plate in mm]
-  - char_height_mm = [width of a single character in mm]
   - char_width_mm = [width of a single character in mm]
+  - char_height_mm = [height of a single character in mm]
   - char_whitespace_top_mm = [whitespace between the character and the top of the plate in mm]
   - char_whitespace_bot_mm = [whitespace between the character and the bottom of the plate in mm]
   - template_max_width_px = [maximum width of the plate before processing.  Should be proportional to the plate dimensions]
