@@ -46,11 +46,10 @@ Each file should be prefaced with a two character identifier for the font/region
 
 Create an empty output directory.
 
-To start classifying characters, use the classifychars utility program included in OpenALPR.  Before running it, make sure you edit the following line in the classifychars.cpp program to match your country.
-  Config* config = new Config("us");
-  
+To start classifying characters, use the classifychars utility program included in OpenALPR.
+
 Execute the command:
-  classifychars [input image directory] [empty output directory]
+  classifychars [country] [input image directory] [empty output directory]
 
 A GUI will open up and analyze each license plate image in your input folder.  The steps to classify each plate are:
   1. Press the "Enter" key and type the letter or number for each position that you wish to classify.  Pressing 'Space' will skip the character.
