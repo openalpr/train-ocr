@@ -36,7 +36,7 @@ for box_file in box_files:
 
     tif_file = input_dir + '/' + file_without_ext + ".tif"
 
-    train_cmd = "%s -l fra %s %s box.train.stderr" % (TESSERACT_BIN, tif_file, file_without_ext)
+    train_cmd = "%s -l eng %s %s nobatch box.train.stderr" % (TESSERACT_BIN, tif_file, file_without_ext)
     print "Executing: " + train_cmd 
     os.system(train_cmd)
     os.system("mv ./" + file_without_ext + ".tr ./tmp/" + file_without_ext + ".tr")
