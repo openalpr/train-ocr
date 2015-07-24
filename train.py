@@ -73,7 +73,15 @@ os.system("mv ./pffmtable ./" + LANGUAGE_NAME + ".pffmtable")
 os.system("mv ./inttemp ./" + LANGUAGE_NAME + ".inttemp")
 os.system("mv ./normproto ./" + LANGUAGE_NAME + ".normproto")
 
+
 os.system(TESSERACT_TRAINDIR + '/combine_tessdata ' + LANGUAGE_NAME + '.')
+
+# If a config file is in the country's directory, use that.
+config_file = os.path.join('./', country, country + '.config')
+if os.path.isfile(config_file):
+    print "Applying config file: " + config_file
+    trainedata_file = LANGUAGE_NAME + '.traineddata'
+    os.system(TESSERACT_TRAINDIR + '/combine_tessdata -o ' + trainedata_file + ' ' + config_file )
 
 os.system("mv ./" + LANGUAGE_NAME + ".unicharset ./tmp/")
 #os.system("mv ./" + LANGUAGE_NAME + ".shapetable ./tmp/")
