@@ -5,12 +5,12 @@ import glob
 import sys
 
 
-TESSERACT_DIR='/home/mhill/projects/alpr/libraries/tesseract-ocr'
+TESSERACT_DIR='/storage/projects/alpr/libraries/tesseract-ocr'
 
 os.environ["TESSDATA_PREFIX"] = TESSERACT_DIR
 #os.system("export TESSDATA_PREFIX=" + TESSERACT_DIR)
 
-TESSERACT_BIN=TESSERACT_DIR + '/api/tesseract'
+TESSERACT_BIN=TESSERACT_DIR + '/tesseract'
 TESSERACT_TRAINDIR= TESSERACT_DIR + '/training'
 
 
@@ -67,8 +67,8 @@ os.system("cp ./" + country + "/input/unicharambigs ./" + LANGUAGE_NAME + ".unic
 os.system(TESSERACT_TRAINDIR + '/cntraining ./tmp/*.tr')
 
 #os.system("mv ./unicharset ./" + LANGUAGE_NAME + ".unicharset")
-#os.system("mv ./shapetable ./" + LANGUAGE_NAME + ".shapetable")
-os.system("rm ./shapetable")
+os.system("mv ./shapetable ./" + LANGUAGE_NAME + ".shapetable")
+#os.system("rm ./shapetable")
 os.system("mv ./pffmtable ./" + LANGUAGE_NAME + ".pffmtable")
 os.system("mv ./inttemp ./" + LANGUAGE_NAME + ".inttemp")
 os.system("mv ./normproto ./" + LANGUAGE_NAME + ".normproto")
@@ -84,7 +84,7 @@ if os.path.isfile(config_file):
     os.system(TESSERACT_TRAINDIR + '/combine_tessdata -o ' + trainedata_file + ' ' + config_file )
 
 os.system("mv ./" + LANGUAGE_NAME + ".unicharset ./tmp/")
-#os.system("mv ./" + LANGUAGE_NAME + ".shapetable ./tmp/")
+os.system("mv ./" + LANGUAGE_NAME + ".shapetable ./tmp/")
 os.system("mv ./" + LANGUAGE_NAME + ".pffmtable ./tmp/")
 os.system("mv ./" + LANGUAGE_NAME + ".inttemp ./tmp/")
 os.system("mv ./" + LANGUAGE_NAME + ".normproto ./tmp/")
