@@ -14,13 +14,13 @@ TESSERACT_BIN=TESSERACT_DIR + '/tesseract'
 TESSERACT_TRAINDIR= TESSERACT_DIR + '/training'
 
 
-country = raw_input("Two-Letter Country Code to Train: ").lower()
+country = input("Two-Letter Country Code to Train: ").lower()
 
 LANGUAGE_NAME='l' + country
 
 box_files = glob.glob('./' + country + '/input/*.box')
 if not box_files:
-    print "Cannot find input files"
+    print( "Cannot find input files")
     sys.exit(1)
 
 os.system("rm ./tmp/*")
@@ -28,7 +28,7 @@ os.system("rm ./tmp/*")
 font_properties_file = open('./tmp/font_properties','w')
 
 for box_file in box_files:
-    print "Processing: " + box_file
+    print( "Processing: " + box_file)
 
     file_without_dir = os.path.split(box_file)[1]
     file_without_ext = os.path.splitext(file_without_dir)[0]
@@ -37,7 +37,7 @@ for box_file in box_files:
     tif_file = input_dir + '/' + file_without_ext + ".tif"
 
     train_cmd = "%s -l eng %s %s nobatch box.train.stderr" % (TESSERACT_BIN, tif_file, file_without_ext)
-    print "Executing: " + train_cmd 
+    print( "Executing: " + train_cmd )
     os.system(train_cmd)
     os.system("mv ./" + file_without_ext + ".tr ./tmp/" + file_without_ext + ".tr")
     os.system("mv ./" + file_without_ext + ".txt ./tmp/" + file_without_ext + ".txt")
@@ -52,12 +52,12 @@ os.system(TESSERACT_TRAINDIR + "/unicharset_extractor ./" + country + "/input/*.
 
 # Shape clustering should currently only be used for the "indic" languages
 #train_cmd = TESSERACT_TRAINDIR + '/shapeclustering -F ./' + country + '/input/font_properties -U unicharset ./' + country + '/input/*.tr'
-#print "Executing: " + train_cmd
+#print( "Executing: " + train_cmd)
 #os.system(train_cmd)
 
 
 train_cmd = TESSERACT_TRAINDIR + '/mftraining -F ./tmp/font_properties -U unicharset -O ./tmp/' + LANGUAGE_NAME + '.unicharset ./tmp/*.tr'
-print "Executing: " + train_cmd
+print( "Executing: " + train_cmd)
 os.system(train_cmd)
 os.system("rm ./unicharset")
 os.system("mv ./tmp/" + LANGUAGE_NAME + ".unicharset ./")
@@ -79,7 +79,7 @@ os.system(TESSERACT_TRAINDIR + '/combine_tessdata ' + LANGUAGE_NAME + '.')
 # If a config file is in the country's directory, use that.
 config_file = os.path.join('./', country, country + '.config')
 if os.path.isfile(config_file):
-    print "Applying config file: " + config_file
+    print( "Applying config file: " + config_file)
     trainedata_file = LANGUAGE_NAME + '.traineddata'
     os.system(TESSERACT_TRAINDIR + '/combine_tessdata -o ' + trainedata_file + ' ' + config_file )
 
