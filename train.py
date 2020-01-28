@@ -5,7 +5,7 @@ import glob
 import sys
 
 
-TESSERACT_DIR='/usr/bin/tesseract-ocr'
+TESSERACT_DIR='/storage/projects/alpr/libraries/tesseract-ocr'
 
 os.environ["TESSDATA_PREFIX"] = TESSERACT_DIR
 #os.system("export TESSDATA_PREFIX=" + TESSERACT_DIR)
